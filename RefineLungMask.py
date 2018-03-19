@@ -1,3 +1,16 @@
+""""
+Mask Refining Script 
+
+Input : Deep Learning Detected Mask Folder 
+Input : Correct Masks made by Radiologist 
+Output : Refined Mask Folder 
+
+
+
+
+"""
+
+
 
 # In[]
 import cv2 
@@ -176,17 +189,17 @@ def MakeLungMask(labelPath, originalMaskPath, dstFile):
     mask = np.asarray(mask, dtype = "uint8")
     mask = cv2.erode(mask,kernel,iterations = 5)
     mask = cv2.dilate(mask,kernel,iterations = 2)
-    plt.imshow(mask, cmap="gray")
-    plt.show()
+    # plt.imshow(mask, cmap="gray")
+    # plt.show()
     io.imsave(dstFile, mask)
 
     print(dstFile)
 
 
 
-labels = ["D:/[Data]/[Lung_Segmentation]/overlay_레이블/Normal", "D:/[Data]/[Lung_Segmentation]/overlay_레이블/Abnormal"]
+labels = ["D:/[Data]/[Lung_Segmentation]/overlay_레이블/Label_20180315/Normal", "D:/[Data]/[Lung_Segmentation]/overlay_레이블/Label_20180315/Abnormal"]
 maskPath = ["D:/[Data]/[Lung_Segmentation]/[PNG]_3_Detected_Mask(256)/DetectedMask_20180308_113204", "D:/[Data]/[Lung_Segmentation]/[PNG]_3_Detected_Mask(256)/DetectedMask_20180308_112943_Abnormal"]
-dst = ["D:/[Data]/[Lung_Segmentation]/GeneratedMask/Normal", "D:/[Data]/[Lung_Segmentation]/GeneratedMask/Abnormal"]
+dst = ["D:/[Data]/[Lung_Segmentation]/GeneratedMask/Mask_20180315/Normal", "D:/[Data]/[Lung_Segmentation]/GeneratedMask/Mask_20180315/Abnormal"]
 
 
 for i, label in enumerate(labels): 
