@@ -8,40 +8,35 @@ import time
 
 os.environ["CUDA_VISIBLE_DEVICES"]="0"
 
-srcbase = "D:/[Data]/[Cardiomegaly]/1_ChestPA_Labeled_Baeksongyi/[PNG]_1_Basic_Data(2k)/2k_2k/Imgs"
+srcbase = "D:/[Data]/[Cardiomegaly]/1_ChestPA_Labeled_Baeksongyi/[PNG]_2_Generated_Data(2k)/Generated_Data_20180125_103950/Imgs"
 dstbase = "D:/[Data]/[Cardiomegaly]/1_ChestPA_Labeled_Baeksongyi/[PNG]_2_Generated_Data(2k)/Generated_Data_20180322_152301_HalfImg"
-folders = ["Normal", "Abnormal"]
-lowerFolders = ["1_AS", "2_AR", "3_MS", "4_MR", "5_AS+AR", "6_MS_MR"]
+folders = ["train", "validation", "test"]
+#lowerFolders = ["1_AS", "2_AR", "3_MS", "4_MR", "5_AS+AR", "6_MS_MR"]
 srcPath = []
-dstPath = []
+leftdstPath = []
+rightdstPath = []
 
 for folder in folders:   
-    if eq(folder, "Normal"):
+
         srcPath.append(srcbase + "/" + folder)
-        dstPath.append(dstbase + "/" + folder)
-        if(not os.path.isdir(dstbase + "/" + folder)):
-            os.mkdir(dstbase + "/" + folder)
-    else:
-        if(not os.path.isdir(dstbase + "/" + folder)):
-            os.mkdir(dstbase + "/" + folder)
-        
-        for lowerFolder in lowerFolders:
-            srcPath.append(srcbase + "/" + folder + "/" + lowerFolder)
-            dstPath.append(dstbase + "/" + folder + "/" + lowerFolder)
-            if(not os.path.isdir(dstbase + "/" + folder + "/" + lowerFolder)):
-                os.mkdir(dstbase + "/" + folder + "/" + lowerFolder)
+        leftdstPath.append(dstbase + "/Left/" + folder)
+        rightdstPath.append(dstbase + "/Right/" + folder)
+        if(not os.path.isdir(dstbase + "/Left/" + folder)):
+            os.mkdir(dstbase + "/Left/" + folder)
+        if(not os.path.isdir(dstbase + "/Right/" + folder)):
+            os.mkdir(dstbase + "/Right/" + folder)
 
 
-def run_Modyfying(srcPaths, dstPaths):
+def run_Modyfying(srcPaths, leftdstPaths, rightdstPaths):
     
     for i, srcPath in enumerate(srcPaths) : 
         for file in os.listdir(srcPath):
-            ModyfyingType_2(srcPath, dstPaths[i], file)
+            ModyfyingType_2(srcPath, leftdstPaths[i], rightdstPaths[i],file)
 
-def ModyfyingType_1(srcPath, dstPath, filename):
+def ModyfyingType_1(srcPath, leftdstPath, rightdstPath, filename):
     
-    left_Path = dstPath + "/Left"
-    Right_Path = dstPath + "/Right"
+    left_Path = leftdstPath
+    Right_Path = rightdstPath
 
     if(not os.path.isdir(left_Path)):
         os.mkdir(left_Path)
@@ -64,10 +59,10 @@ def ModyfyingType_1(srcPath, dstPath, filename):
     print(srcPath + "/" + filename)
 
 
-def ModyfyingType_2(srcPath, dstPath, filename):
+def ModyfyingType_2(srcPath, leftdstPath, rightdstPath, filename):
     
-    left_Path = dstPath + "/Left"
-    Right_Path = dstPath + "/Right"
+    left_Path = leftdstPath
+    Right_Path = rightdstPath
 
     if(not os.path.isdir(left_Path)):
         os.mkdir(left_Path)
@@ -93,7 +88,7 @@ def ModyfyingType_2(srcPath, dstPath, filename):
 
 
 
-run_Modyfying(srcPath, dstPath)
+run_Modyfying(srcPath, leftdstPath, rightdstPath)
     
 
 

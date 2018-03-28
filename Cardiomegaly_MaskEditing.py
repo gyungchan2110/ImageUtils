@@ -11,14 +11,14 @@ def expand_Size(srcPath, dstPath):
     img = cv2.imread(srcPath)
     img = np.asarray(img, dtype = "uint8")
 
-    kernel = np.ones((11,11))
+    kernel = np.ones((21,21))
     img = cv2.dilate(img, kernel, iterations = 2)  
     cv2.imwrite(dstPath, img)
 
 
 
 src = "D:/[Data]/[Cardiomegaly]/1_ChestPA_Labeled_Baeksongyi/[PNG]_2_Generated_Data(2k)/Generated_Data_20180125_103950"
-dst = "D:/[Data]/[Cardiomegaly]/1_ChestPA_Labeled_Baeksongyi/[PNG]_2_Generated_Data(2k)/Generated_Data_20180125_103950_Expand_20pixel"
+dst = "D:/[Data]/[Cardiomegaly]/1_ChestPA_Labeled_Baeksongyi/[PNG]_2_Generated_Data(2k)/Generated_Data_20180125_103950_Expand_40pixel"
 
 folders = ["train", "test","validation"]
 masks = ["Mask_Aortic Knob", 'Mask_Axis', "Mask_Carina","Mask_DAO","Mask_Diaphragm" ,"Mask_LAA",
