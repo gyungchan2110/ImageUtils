@@ -17,12 +17,11 @@ def expand_Size(srcPath, dstPath):
 
 
 
-src = "D:/[Data]/[Cardiomegaly]/1_ChestPA_Labeled_Baeksongyi/[PNG]_2_Generated_Data(2k)/Generated_Data_20180125_103950"
-dst = "D:/[Data]/[Cardiomegaly]/1_ChestPA_Labeled_Baeksongyi/[PNG]_2_Generated_Data(2k)/Generated_Data_20180125_103950_Expand_40pixel"
+src = "D:/[Data]/[Cardiomegaly]/1_ChestPA_Labeled_Baeksongyi/[PNG]_2_Generated_Data(2k)/Generated_Data_20180410_191400_Seg_Base/Masks"
+dst = "D:/[Data]/[Cardiomegaly]/1_ChestPA_Labeled_Baeksongyi/[PNG]_2_Generated_Data(2k)/Generated_Data_20180410_191400_Seg_Base_Expand_40pixel/Masks"
 
 folders = ["train", "test","validation"]
-masks = ["Mask_Aortic Knob", 'Mask_Axis', "Mask_Carina","Mask_DAO","Mask_Diaphragm" ,"Mask_LAA",
-            "Mask_Lt Lower CB", "Mask_Pulmonary Conus", "Mask_Rt Lower CB", "Mask_Rt Upper CB" ]
+masks = MasksTypes = ["Aortic Knob", "Lt Lower CB", "Pulmonary Conus", "Rt Lower CB", "Rt Upper CB", "DAO" , "Carina" , "LAA"]
 
 
 if not os.path.isdir(dst):

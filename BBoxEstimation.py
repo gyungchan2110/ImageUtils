@@ -92,5 +92,5 @@ def estimate_Jaccard(true_Loc, pred_Loc):
     y_pred_f = pred_label.flatten()
     intersection = np.logical_and(y_true_f, y_pred_f).sum()
     union = np.logical_or(y_true_f, y_pred_f).sum()
-    jac = (intersection + smooth) / (union  + smooth)
+    jac = (intersection) / (union )
     return jac
