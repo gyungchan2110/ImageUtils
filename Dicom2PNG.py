@@ -25,6 +25,9 @@ def dicom2png(src_Path, dst_Path, imshape):
         return 
 
     for filename in os.listdir(src_Path): 
+        if(filename[-4:] != ".dcm"):
+            continue  
+
         filepath = src_Path + "/" + filename
         if(os.path.isdir(filepath)):
             continue 
@@ -48,14 +51,21 @@ def dicom2png(src_Path, dst_Path, imshape):
 
         _ = cv2.imread(dst_Path +"/"+ filename[:-4]+".png")
         print(_.shape)
-        break
+        #break
 
-folders = ["Normal","Abnormal"]
+# folders = ["Normal","Abnormal"]
 
-src = "D:/[Data]/[Lung_Segmentation]/Dicom"
-dst = "D:/[Data]/[Lung_Segmentation]/[PNG]_1_Basic_Data(2k)/Img_20180319"
+# src = "D:/[Data]/[Lung_Segmentation]/Dicom"
+# dst = "D:/[Data]/[Lung_Segmentation]/[PNG]_1_Basic_Data(2k)/Img_20180319"
 
-for folder in folders:
+# for folder in folders:
 
-    dicom2png( src + "/" + folder,  dst + "/" + folder, None)
-    break
+#     dicom2png( src + "/" + folder,  dst + "/" + folder, None)
+#     break
+
+
+
+file = "D:/[Data]/[Cardiomegaly]/1_ChestPA_Labeled_Baeksongyi/[DCM]_0_Original/Abnormal_20180118_612/1_AS_20180118_304/1000274"
+dst = "D:/TestTemp"
+
+dicom2png( file,  dst, None)

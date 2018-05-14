@@ -12,13 +12,14 @@ os.environ["CUDA_VISIBLE_DEVICES"]="0"
 
 LungMaskPath = "D:/[Data]/[Lung_Segmentation]/WholeDataSetMask/Whole" # + Imgs
 
-DataPath = "D:/[Data]/[Cardiomegaly]/1_ChestPA_Labeled_Baeksongyi/[PNG]_2_Generated_Data(2k)/Generated_Data_20180410_191400_Seg_Base_Expand_40pixel"
+DataPath = "D:/[Data]/[Cardiomegaly]/1_ChestPA_Labeled_Baeksongyi/[PNG]_2_Generated_Data(2k)/Generated_Data_20180410_191400_Seg_Base"
 
-dstPath = "D:/[Data]/[Cardiomegaly]/1_ChestPA_Labeled_Baeksongyi/[PNG]_2_Generated_Data(2k)/Generated_Data_20180410_191400_Seg_Base_Expand_40pixel_Cropped"
+dstPath = "D:/[Data]/[Cardiomegaly]/1_ChestPA_Labeled_Baeksongyi/[PNG]_2_Generated_Data(2k)/Generated_Data_20180410_191400_Seg_Base_Cropped"
 
 Folders = ["Imgs", "Masks"] 
 
 MasksType = ["Aortic Knob", "Lt Lower CB", "Pulmonary Conus", "Rt Lower CB", "Rt Upper CB", "DAO" , "Carina" , "LAA"]
+
 
 FolderTypes = ["train", "validation", "test"]
 
@@ -29,6 +30,7 @@ for folder in FolderTypes :
     
     ImgPath = DataPath + "/" + Folders[0] + "/" + folder
     dstImgPath = dstPath + "/" + Folders[0] + "/" + folder
+
 
     if(not os.path.isdir(dstImgPath)):
         os.mkdir(dstImgPath)
@@ -67,15 +69,12 @@ for folder in FolderTypes :
         
         
         
-        
-        
-        
         Img = cv2.imread(ImgPath + "/" + file, 0)
-
+        
         ImgCrop = Img[top_y*2:bottom_y*2, top_x*2:bottom_x*2]
         ImgCrop = cv2.resize(ImgCrop, (1024,1024))
         cv2.imwrite(dstImgPath + "/" + file, ImgCrop)
-    
+
         for maskType in MasksType:
             maskPath = DataPath + "/" + Folders[1] + "/" + maskType + "/" + folder
             maskdstPath = dstPath + "/" + Folders[1] + "/" + maskType + "/" + folder

@@ -35,13 +35,15 @@ def PostProcessing_Ver1(inputImgPath,inputImgPath2):
     bin_img = cv2.dilate(bin_img,kernel,iterations = 5)
     bin_img = cv2.erode(bin_img,kernel,iterations = 7)
     bin_img = cv2.dilate(bin_img,kernel,iterations = 2)
-    print(inputImgPath)
-    plt.imshow(bin_img, cmap="gray")
-    plt.show()
 
-imgFolder = "D:/[Data]/[Lung_Segmentation]/[PNG]_3_Detected_Mask(256)/DetectedMask_20180319_160133"
-imgFolder2 = "D:/[Data]/[Lung_Segmentation]/[PNG]_3_Detected_Mask(256)/DetectedMask_20180319_100708"
-imgPath = "D:/[Data]/[Lung_Segmentation]/[PNG]_3_Detected_Mask(256)/DetectedMask_20180319_100708/Mask_Img_20180308_110546.png"
+    cv2.imwrite(inputImgPath2, bin_img)
+    print(inputImgPath)
+    # plt.imshow(bin_img, cmap="gray")
+    # plt.show()
+
+imgFolder = "D:/[Data]/[Lung_Segmentation]/TempDataSet/Masks/pngfile"
+imgFolder2 = "D:/[Data]/[Lung_Segmentation]/TempDataSet/Masks/pngfile_post"
+##imgPath = "D:/[Data]/[Lung_Segmentation]/[PNG]_3_Detected_Mask(256)/DetectedMask_20180319_100708/Mask_Img_20180308_110546.png"
 for file in os.listdir(imgFolder):
     imgPath = imgFolder + "/" + file
     imgPath_2 = imgFolder2 + "/" + file
