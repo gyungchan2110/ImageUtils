@@ -6,11 +6,11 @@ from operator import eq
 import random
 import matplotlib.pyplot as plt 
 
-BasePath = "D:/[Data]/[Cardiomegaly]/1_ChestPA_Labeled_Baeksongyi/[PNG]_2_Generated_Data(2k)/Generated_Data_20180410_191400_Seg_Base_Expand_40pixel_Cropped_Detected"
+BasePath = "D:/[Data]/[Cardiomegaly]/1_ChestPA_Labeled_Baeksongyi/[PNG]_2_Generated_Data(2k)/Generated_Data_20180410_191400_Seg_Base_Expand_20pixel_Cropped_Detected"
 ImgPath = BasePath + '/Imgs/test'
 MaskPaths = BasePath + "/Masks"
 Dstpath = "D:/[Data]/[Cardiomegaly]/1_ChestPA_Labeled_Baeksongyi/[PNG]_2_Generated_Data(2k)/Temp_OverLay"
-Classlist = ["Aortic Knob", "Lt Lower CB", "Pulmonary Conus", "Rt Lower CB", "Rt Upper CB", "DAO" , "Carina" , "LAA"]
+Classlist = ["Aortic Knob", "Carina"]
 
 os.environ["CUDA_VISIBLE_DEVICES"]= "0"
 

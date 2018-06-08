@@ -78,3 +78,21 @@ for i, ImgSrcPath in enumerate(ImgPathes):
 
             shutil.copy( MaskSrcPath + "/" + masktype + "/" + file, MaskDstPath + "/" + masktype + "/" + folder + "/" + file)
         
+# In[]
+
+import shutil 
+import os  
+
+Imgpath = "D:/[Data]/[Cardiomegaly]/1_ChestPA_Labeled_Baeksongyi/[PNG]_2_Generated_Data(2k)/Generated_Data_20180410_191400_Seg_Base/Imgs"
+DstPath = "D:/[Data]/[Cardiomegaly]/1_ChestPA_Labeled_Baeksongyi/[PNG]_2_Generated_Data(2k)/Generated_Data_20180410_191400_Seg_Base/Masks/Thorax(x)"
+Source = "D:/[Data]/[Cardiomegaly]/1_ChestPA_Labeled_Baeksongyi/[PNG]_1_Basic_Data(2k)/Temporal"
+
+folders = ["test", "validation", "train"]
+
+for folder in folders:
+    
+    if not os.path.isdir(DstPath + "/" + folder):
+        os.mkdir(DstPath + "/" + folder)
+
+    for file in os.listdir(Imgpath + "/" + folder):
+        shutil.copy2(Source + "/" + file, DstPath + "/" + folder + "/" + file)

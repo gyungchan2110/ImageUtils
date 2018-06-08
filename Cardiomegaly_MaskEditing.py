@@ -12,16 +12,16 @@ def expand_Size(srcPath, dstPath):
     img = np.asarray(img, dtype = "uint8")
 
     kernel = np.ones((21,21))
-    img = cv2.dilate(img, kernel, iterations = 2)  
+    img = cv2.dilate(img, kernel, iterations = 1)  
     cv2.imwrite(dstPath, img)
 
 
 
 src = "D:/[Data]/[Cardiomegaly]/1_ChestPA_Labeled_Baeksongyi/[PNG]_2_Generated_Data(2k)/Generated_Data_20180410_191400_Seg_Base/Masks"
-dst = "D:/[Data]/[Cardiomegaly]/1_ChestPA_Labeled_Baeksongyi/[PNG]_2_Generated_Data(2k)/Generated_Data_20180410_191400_Seg_Base_Expand_40pixel/Masks"
+dst = "D:/[Data]/[Cardiomegaly]/1_ChestPA_Labeled_Baeksongyi/[PNG]_2_Generated_Data(2k)/Generated_Data_20180410_191400_Seg_Base_Expand_20pixel/Masks"
 
 folders = ["train", "test","validation"]
-masks = MasksTypes = ["Aortic Knob", "Lt Lower CB", "Pulmonary Conus", "Rt Lower CB", "Rt Upper CB", "DAO" , "Carina" , "LAA"]
+masks = MasksTypes = ["Landmark", "Thorax(x)"]
 
 
 if not os.path.isdir(dst):
